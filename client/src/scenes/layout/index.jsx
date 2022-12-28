@@ -6,10 +6,10 @@ import Navbar from '@/components/Navbar'
 
 const Layout = () => {
   return (
-    <Box width="100%" heigt="100%">
+    <Box heigt="100%" width="100%" >
       <Box>
-    <Navbar/>
-    <Outlet/>
+        <Navbar />
+        <Outlet />
       </Box>
     </Box>
   )

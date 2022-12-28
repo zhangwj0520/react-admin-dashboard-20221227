@@ -18,30 +18,32 @@ const Navbar = () => {
   const dispatch = useDispatch()
   const theme = useTheme()
   return (
-   <AppBar sx={{
-     position: 'static',
-     background: 'none',
-     boxShadow: 'none'
-   }}>
-  <Toolbar sx={{ justifyContent: 'space-between' }}></Toolbar>
-  {/* LEFT SIDE */}
-  <FlexBetween>
-    <IconButton onClick={() => console.log('open/close sidebar')}>
-        <MenuIcon/>
-    </IconButton>
-    <FlexBetween
-    backgroundColor={theme.palette.background.alt}
-    borderRadius="9px"
-            gap="3rem"
-            p="0.1rem 1.5rem"
+    <AppBar
+      sx={{
+        position: 'static',
+        background: 'none',
+        boxShadow: 'none'
+      }}
     >
-    <InputBase placeholder='Search...'></InputBase>
-    <IconButton>
-        <Search></Search>
-    </IconButton>
-    </FlexBetween>
-  </FlexBetween>
-   </AppBar>
+      <Toolbar sx={{ justifyContent: 'space-between' }}></Toolbar>
+      {/* LEFT SIDE */}
+      <FlexBetween>
+        <IconButton onClick={() => console.log('open/close sidebar')}>
+          <MenuIcon />
+        </IconButton>
+        <FlexBetween
+          backgroundColor={theme.palette.background.alt}
+          borderRadius="9px"
+          gap="3rem"
+          p="0.1rem 1.5rem"
+        >
+          <InputBase placeholder='Search...'></InputBase>
+          <IconButton>
+            <Search></Search>
+          </IconButton>
+        </FlexBetween>
+      </FlexBetween>
+    </AppBar>
   )
 }
 

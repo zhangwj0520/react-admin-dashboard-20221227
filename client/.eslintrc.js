@@ -22,6 +22,9 @@ module.exports = {
   ],
   rules: {
     semi: 'error',
+    'no-unused-vars': 1,
+    'react/jsx-uses-react': 'off', // jsx转换
+    'react/react-in-jsx-scope': 'off', // jsx转换
     'react/jsx-indent-props': [2, 2], // 验证JSX中的props缩进
     'react/jsx-indent': [2, 2],
     'react/jsx-closing-bracket-location': [2, 'line-aligned'],

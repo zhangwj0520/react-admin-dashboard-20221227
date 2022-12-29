@@ -13,8 +13,12 @@ import { setMode } from '@/state'
 import profileImage from '@/assets/profile.jpeg'
 import { useTheme } from '@emotion/react'
 import { AppBar, IconButton, InputBase, Toolbar } from '@mui/material'
+import PropTypes from 'prop-types'
 
-const Navbar = () => {
+const Navbar = ({
+  isSidebarOpen,
+  setIsSidebarOpen
+}) => {
   const dispatch = useDispatch()
   const theme = useTheme()
   return (
@@ -25,26 +29,43 @@ const Navbar = () => {
         boxShadow: 'none'
       }}
     >
-      <Toolbar sx={{ justifyContent: 'space-between' }}></Toolbar>
-      {/* LEFT SIDE */}
-      <FlexBetween>
-        <IconButton onClick={() => console.log('open/close sidebar')}>
-          <MenuIcon />
-        </IconButton>
-        <FlexBetween
-          backgroundColor={theme.palette.background.alt}
-          borderRadius="9px"
-          gap="3rem"
-          p="0.1rem 1.5rem"
-        >
-          <InputBase placeholder='Search...'></InputBase>
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
+        {/* LEFT SIDE */}
+        <FlexBetween>
+          <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+            <MenuIcon />
+          </IconButton>
+          <FlexBetween
+            backgroundColor={theme.palette.background.alt}
+            borderRadius="9px"
+            gap="3rem"
+            p="0.1rem 1.5rem"
+          >
+            <InputBase placeholder='Search...'></InputBase>
+            <IconButton>
+              <Search></Search>
+            </IconButton>
+          </FlexBetween>
+        </FlexBetween>
+        {/* RIGHT SIDE */}
+        <FlexBetween gap='1.5rem'>
+          <IconButton onClick={() => dispatch(setMode())}>
+            {theme.palette.mode === 'dart'
+              ? <DarkModeOutlined sx={{ fontSize: '25px' }} />
+              : <DarkModeOutlined sx={{ fontSize: '25px' }} />}
+          </IconButton>
           <IconButton>
-            <Search></Search>
+            <SettingsOutlined sx={{ fontSize: '25px' }} />
           </IconButton>
         </FlexBetween>
-      </FlexBetween>
+      </Toolbar>
     </AppBar>
   )
+}
+
+Navbar.propTypes = {
+  isSidebarOpen: PropTypes.bool.isRequired,
+  setIsSidebarOpen: PropTypes.func.isRequired
 }
 
 export default Navbar

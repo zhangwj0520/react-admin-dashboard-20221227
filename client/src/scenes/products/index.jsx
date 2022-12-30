@@ -1,8 +1,9 @@
 import { useState } from 'react'
-import { Box, Button, Card, CardActions, CardContent, CircularProgress, Collapse, Rating, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Button, Card, CardActions, CardContent, Collapse, Rating, Typography, useMediaQuery, useTheme } from '@mui/material'
 import Header from '@/components/Header'
 import { useGetProductsQuery } from '@/state/api'
-
+import OutletContent from '@/components/OutletContent'
+import Loading from '@/components/Loading'
 const Product = ({
   _id,
   name,
@@ -78,11 +79,10 @@ const Products = () => {
   console.log('data =>  ', data)
 
   return (
-    <Box m="1.5rem 2.5rem">
+    <OutletContent>
       <Header subtitle='see your list of products' title='PRODUCTS'></Header>
       {
         (data || !isLoading)
-        // (isLoading === true)
           ? <Box
               columnGap="1.33%"
               display="grid"
@@ -116,11 +116,9 @@ const Products = () => {
                 supply={supply}
               />))}
           </Box>
-          : <Box height="100%">
-            <CircularProgress />
-          </Box>
+          : <Loading />
       }
-    </Box>
+    </OutletContent>
   )
 }
 

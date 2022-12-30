@@ -14,6 +14,10 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open, type }) => {
     return ({
       flexGrow: 1,
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100vh',
+      overflow: 'hidden',
       // padding: theme.spacing(3),
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,
@@ -37,7 +41,6 @@ const Layout = () => {
   const userId = useSelector(state => state.global.userId)
 
   const { data } = useGetUserQuery(userId)
-  console.log('data =>  ', data)
 
   useEffect(() => {
     setIsSidebarOpen(isNonMobile)
@@ -57,14 +60,12 @@ const Layout = () => {
         user={data || {}}
       />
       <Main open={isSidebarOpen} type={isNonMobile ? 'pc' : 'mobile'} >
-        <Box>
-          <Navbar
-            isSidebarOpen={isSidebarOpen}
-            setIsSidebarOpen={setIsSidebarOpen}
-            user={data || {}}
-          />
-          <Outlet />
-        </Box>
+        <Navbar
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+          user={data || {}}
+        />
+        <Outlet flexGrow={1} />
       </Main>
 
     </Box>

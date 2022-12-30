@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Box, Button, Card, CardActions, CardContent, Collapse, Rating, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Button, Card, CardActions, CardContent, CircularProgress, Collapse, Rating, Typography, useMediaQuery, useTheme } from '@mui/material'
 import Header from '@/components/Header'
 import { useGetProductsQuery } from '@/state/api'
 
@@ -14,7 +14,6 @@ const Product = ({
   stat,
 
 }) => {
-  console.log('stat', stat)
   const theme = useTheme()
   const [isExpanded, setIsExpanded] = useState(false)
   return (
@@ -83,6 +82,7 @@ const Products = () => {
       <Header subtitle='see your list of products' title='PRODUCTS'></Header>
       {
         (data || !isLoading)
+        // (isLoading === true)
           ? <Box
               columnGap="1.33%"
               display="grid"
@@ -116,7 +116,9 @@ const Products = () => {
                 supply={supply}
               />))}
           </Box>
-          : <>Loading...</>
+          : <Box height="100%">
+            <CircularProgress />
+          </Box>
       }
     </Box>
   )

@@ -1,12 +1,12 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
   extends: [
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
-    'standard'
+    'standard',
   ],
   overrides: [
   ],
@@ -14,13 +14,14 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   plugins: [
-    'react'
+    'react',
   ],
   rules: {
+    'comma-dangle': ['error', 'always-multiline'],
     semi: 'error',
     'no-unused-vars': 1,
     'react/jsx-uses-react': 'off', // jsx转换
@@ -28,7 +29,7 @@ module.exports = {
     'react/jsx-indent-props': [2, 2], // 验证JSX中的props缩进
     'react/jsx-indent': [2, 2],
     'react/jsx-closing-bracket-location': [2, 'line-aligned'],
-    'react/jsx-closing-tag-location': 2,
+    // 'react/jsx-closing-tag-location': 2,
     'react/jsx-first-prop-new-line': [2, 'multiline'],
     'react/jsx-curly-newline': 2,
     'react/jsx-curly-spacing': [2, { when: 'never', allowMultiline: false }],
@@ -44,8 +45,9 @@ module.exports = {
       arrow: 'parens',
       condition: 'ignore',
       logical: 'ignore',
-      prop: 'ignore'
-    }]
+      prop: 'ignore',
+    }],
+    'react/prop-types': 0,
 
-  }
+  },
 }

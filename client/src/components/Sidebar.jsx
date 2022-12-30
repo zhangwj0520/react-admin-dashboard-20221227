@@ -1,9 +1,10 @@
-import { Box, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, useTheme } from '@mui/material'
+import { Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, useTheme } from '@mui/material'
 import {
   ChevronLeft, HomeOutlined, ShoppingCartOutlined, Groups2Outlined, ReceiptLongOutlined,
   PublicOutlined, PointOfSaleOutlined, TodayOutlined, CalendarMonthOutlined, PieChartOutlined,
-  AdminPanelSettingsOutlined, TrendingUpOutlined
-  , ChevronRightOutlined
+  AdminPanelSettingsOutlined, TrendingUpOutlined,
+  ChevronRightOutlined,
+  SettingsOutlined,
 } from '@mui/icons-material'
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -14,67 +15,68 @@ import profileImage from '@/assets/profile.jpeg'
 const navItems = [
   {
     text: 'Dashboard',
-    icon: <HomeOutlined />
+    icon: <HomeOutlined />,
   },
   {
     text: 'Client Facing',
-    icon: null
+    icon: null,
   },
   {
     text: 'Products',
-    icon: <ShoppingCartOutlined />
+    icon: <ShoppingCartOutlined />,
   },
   {
     text: 'Customers',
-    icon: <Groups2Outlined />
+    icon: <Groups2Outlined />,
   },
   {
     text: 'Transactions',
-    icon: <ReceiptLongOutlined />
+    icon: <ReceiptLongOutlined />,
   },
   {
     text: 'Geography',
-    icon: <PublicOutlined />
+    icon: <PublicOutlined />,
   },
   {
     text: 'Sales',
-    icon: null
+    icon: null,
   },
   {
     text: 'Overview',
-    icon: <PointOfSaleOutlined />
+    icon: <PointOfSaleOutlined />,
   },
   {
     text: 'Daily',
-    icon: <TodayOutlined />
+    icon: <TodayOutlined />,
   },
   {
     text: 'Monthly',
-    icon: <CalendarMonthOutlined />
+    icon: <CalendarMonthOutlined />,
   },
   {
     text: 'Breakdown',
-    icon: <PieChartOutlined />
+    icon: <PieChartOutlined />,
   },
   {
     text: 'Management',
-    icon: null
+    icon: null,
   },
   {
     text: 'Admin',
-    icon: <AdminPanelSettingsOutlined />
+    icon: <AdminPanelSettingsOutlined />,
   },
   {
     text: 'Performance',
-    icon: <TrendingUpOutlined />
-  }
+    icon: <TrendingUpOutlined />,
+  },
 ]
 
 const Sidebar = ({
+  user,
   drawerWidth,
   isSidebarOpen,
   setIsSidebarOpen,
-  isNonMobile
+  isNonMobile,
 }) => {
   const { pathname } = useLocation()
   const [active, setActive] = useState('')
@@ -99,8 +101,8 @@ const Sidebar = ({
             boxSixing: 'border-box',
             borderWidth: isNonMobile ? 0 : '2px',
             width: drawerWidth,
-            transition: 'width 0.3s cubic-bezier(0.2, 0, 0, 1) 0s'
-          }
+            transition: 'width 0.3s cubic-bezier(0.2, 0, 0, 1) 0s',
+          },
         }}
         variant="persistent"
       >
@@ -144,7 +146,7 @@ const Sidebar = ({
                       color:
                           active === lcText
                             ? theme.palette.primary[600]
-                            : theme.palette.secondary[100]
+                            : theme.palette.secondary[100],
                     }}
                   >
                     <ListItemIcon
@@ -153,7 +155,7 @@ const Sidebar = ({
                         color:
                             active === lcText
                               ? theme.palette.primary[600]
-                              : theme.palette.secondary[200]
+                              : theme.palette.secondary[200],
                       }}
                     >
                       {icon}
@@ -167,6 +169,48 @@ const Sidebar = ({
               )
             })}
           </List>
+        </Box>
+        <Box
+          bottom="2rem"
+          position="absolute"
+        >
+          <Divider />
+          <FlexBetween
+            gap="1rem"
+            m="1.5rem 2rem 0 3rem"
+            textTransform="none"
+          >
+            <Box
+              alt="profile"
+              borderRadius="50%"
+              component="img"
+              height="40px"
+              src={profileImage}
+              sx={{ objectFit: 'cover' }}
+              width="40px"
+            />
+            <Box textAlign="left">
+              <Typography
+                fontSize="0.9rem"
+                fontWeight="bold"
+                sx={{ color: theme.palette.secondary[100] }}
+              >
+                {user.name}
+              </Typography>
+              <Typography
+                fontSize="0.8rem"
+                sx={{ color: theme.palette.secondary[200] }}
+              >
+                {user.occupation}
+              </Typography>
+            </Box>
+            <SettingsOutlined
+              sx={{
+                color: theme.palette.secondary[300],
+                fontSize: '25px ',
+              }}
+            />
+          </FlexBetween>
 
         </Box>
       </Drawer>
@@ -174,10 +218,11 @@ const Sidebar = ({
   )
 }
 Sidebar.propTypes = {
+  user: PropTypes.object.isRequired,
   drawerWidth: PropTypes.string.isRequired,
   isSidebarOpen: PropTypes.bool.isRequired,
   setIsSidebarOpen: PropTypes.func.isRequired,
-  isNonMobile: PropTypes.bool.isRequired
+  isNonMobile: PropTypes.bool.isRequired,
 }
 // https://zh-hans.reactjs.org/docs/typechecking-with-proptypes.html
 

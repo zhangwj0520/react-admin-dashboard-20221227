@@ -6,36 +6,40 @@ import { useSelector } from 'react-redux'
 import Navbar from '@/components/Navbar'
 import Sidebar from '@/components/Sidebar'
 
+import { useGetUserQuery } from '@/state/api'
+
 const drawerWidth = '250px'
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open, type }) => {
-    console.log('type =>  ', type)
     return ({
       flexGrow: 1,
-      padding: theme.spacing(3),
+      // padding: theme.spacing(3),
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen
+        duration: theme.transitions.duration.leavingScreen,
       }),
       marginLeft: type === 'pc' ? `-${drawerWidth}` : 0,
       ...(open && {
         transition: theme.transitions.create('margin', {
           easing: theme.transitions.easing.easeOut,
-          duration: theme.transitions.duration.enteringScreen
+          duration: theme.transitions.duration.enteringScreen,
         }),
-        marginLeft: 0
-      })
+        marginLeft: 0,
+      }),
     })
-  }
+  },
 )
 
 const Layout = () => {
   const isNonMobile = useMediaQuery('(min-width:600px)')
   const [isSidebarOpen, setIsSidebarOpen] = useState(isNonMobile)
+  const userId = useSelector(state => state.global.userId)
+
+  const { data } = useGetUserQuery(userId)
+  console.log('data =>  ', data)
 
   useEffect(() => {
-    console.log('isNonMobile =>  ', isNonMobile)
     setIsSidebarOpen(isNonMobile)
   }, [isNonMobile])
 
@@ -50,12 +54,14 @@ const Layout = () => {
         isNonMobile={isNonMobile}
         isSidebarOpen={isSidebarOpen}
         setIsSidebarOpen={setIsSidebarOpen}
+        user={data || {}}
       />
       <Main open={isSidebarOpen} type={isNonMobile ? 'pc' : 'mobile'} >
-        <Box >
+        <Box>
           <Navbar
             isSidebarOpen={isSidebarOpen}
             setIsSidebarOpen={setIsSidebarOpen}
+            user={data || {}}
           />
           <Outlet />
         </Box>

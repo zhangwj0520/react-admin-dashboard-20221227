@@ -7,6 +7,7 @@ import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom'
 
 import Layout from '@/scenes/layout'
 import Dashboard from '@/scenes/dashboard'
+import Products from '@/scenes/products'
 
 function App () {
   const mode = useSelector(state => state.global.mode)
@@ -22,6 +23,10 @@ function App () {
               <Route
                 element={<Dashboard />}
                 path="/dashboard"
+              />
+              <Route
+                element={<Products />}
+                path="/products"
               />
             </Route>
           </Routes>

@@ -13,7 +13,7 @@ export const tokensDark = {
     700: '#3d3d3d',
     800: '#292929',
     900: '#141414',
-    1000: '#000000' // manually adjusted
+    1000: '#000000', // manually adjusted
   },
   primary: {
     // blue
@@ -25,7 +25,7 @@ export const tokensDark = {
     600: '#191F45', // manually adjusted
     700: '#141937',
     800: '#0d1025',
-    900: '#070812'
+    900: '#070812',
   },
   secondary: {
     // yellow
@@ -38,8 +38,8 @@ export const tokensDark = {
     600: '#cca752',
     700: '#997d3d',
     800: '#665429',
-    900: '#332a14'
-  }
+    900: '#332a14',
+  },
 }
 
 // function that reverses the color palette
@@ -70,70 +70,70 @@ export const themeSettings = (mode) => {
             primary: {
               ...tokensDark.primary,
               main: tokensDark.primary[400],
-              light: tokensDark.primary[400]
+              light: tokensDark.primary[400],
             },
             secondary: {
               ...tokensDark.secondary,
-              main: tokensDark.secondary[300]
+              main: tokensDark.secondary[300],
             },
             neutral: {
               ...tokensDark.grey,
-              main: tokensDark.grey[500]
+              main: tokensDark.grey[500],
             },
             background: {
               default: tokensDark.primary[600],
-              alt: tokensDark.primary[500]
-            }
+              alt: tokensDark.primary[500],
+            },
           }
         : {
             // palette values for light mode
             primary: {
               ...tokensLight.primary,
               main: tokensDark.grey[50],
-              light: tokensDark.grey[100]
+              light: tokensDark.grey[100],
             },
             secondary: {
               ...tokensLight.secondary,
               main: tokensDark.secondary[600],
-              light: tokensDark.secondary[700]
+              light: tokensDark.secondary[700],
             },
             neutral: {
               ...tokensLight.grey,
-              main: tokensDark.grey[500]
+              main: tokensDark.grey[500],
             },
             background: {
               default: tokensDark.grey[0],
-              alt: tokensDark.grey[50]
-            }
-          })
+              alt: tokensDark.grey[50],
+            },
+          }),
     },
     typography: {
       fontFamily: ['Inter', 'sans-serif'].join(','),
       fontSize: 12,
       h1: {
         fontFamily: ['Inter', 'sans-serif'].join(','),
-        fontSize: 40
+        fontSize: 40,
       },
       h2: {
         fontFamily: ['Inter', 'sans-serif'].join(','),
-        fontSize: 32
+        fontSize: 32,
       },
       h3: {
         fontFamily: ['Inter', 'sans-serif'].join(','),
-        fontSize: 24
+        fontSize: 24,
       },
       h4: {
         fontFamily: ['Inter', 'sans-serif'].join(','),
-        fontSize: 20
+        fontSize: 20,
       },
       h5: {
         fontFamily: ['Inter', 'sans-serif'].join(','),
-        fontSize: 16
+        fontSize: 16,
       },
       h6: {
         fontFamily: ['Inter', 'sans-serif'].join(','),
-        fontSize: 14
-      }
-    }
+        fontSize: 14,
+      },
+    },
   }
 }

@@ -3,7 +3,7 @@ import { styled } from '@mui/system'
 
 const OutletContent = styled(Box)({
   overflow: 'hidden scroll',
-  padding: '1.5rem 2.5rem',
+  padding: '1.5rem 2rem',
   display: 'flex',
   flexDirection: 'column',
   height: '100vh',

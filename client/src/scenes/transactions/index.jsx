@@ -2,7 +2,7 @@ import Header from '@/components/Header'
 import OutletContent from '@/components/OutletContent'
 import { useGetTransactionsQuery } from '@/state/api'
 import { useTheme, Box } from '@mui/material'
-import { DataGrid } from '@mui/x-data-grid'
+import { DataGrid, GridToolbar, zhCN } from '@mui/x-data-grid'
 import { useState } from 'react'
 import DataGridCustomToolbar from '@/components/DataGridCustomToolbar'
 import dayjs from 'dayjs'
@@ -104,12 +104,13 @@ const Transactions = () => {
       >
         <DataGrid
           columns={columns}
-        //   components={{ Toolbar: DataGridCustomToolbar }}
+          components={{ Toolbar: DataGridCustomToolbar }}
           componentsProps={{
             toolbar: { searchInput, setSearchInput, setSearch },
           }}
           getRowId={(row) => row._id}
           loading={isLoading || !data}
+          localeText={zhCN.components.MuiDataGrid.defaultProps.localeText}
           onPageChange={(newPage) => setPage(newPage)}
           onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
           onSortModelChange={(newSortModel) => setSort(...newSortModel)}
@@ -121,6 +122,7 @@ const Transactions = () => {
           rows={(data && data.transactions) || []}
           rowsPerPageOptions={[20, 50, 100]}
           sortingMode="server"
+
         />
       </Box>
     </OutletContent>

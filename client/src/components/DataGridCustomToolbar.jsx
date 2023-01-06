@@ -1,21 +1,49 @@
+import { Search } from '@mui/icons-material'
+import { IconButton, TextField, InputAdornment } from '@mui/material'
 import {
-  GridColumnMenuContainer,
-  GridFilterMenuItem,
-  HideGridColMenuItem,
+  GridToolbarDensitySelector,
+  GridToolbarContainer,
+  GridToolbarExport,
+  GridToolbarColumnsButton,
 } from '@mui/x-data-grid'
+import FlexBetween from './FlexBetween'
 
-const CustomColumnMenu = (props) => {
-  const { hideMenu, currentColumn, open } = props
+const DataGridCustomToolbar = ({ searchInput, setSearchInput, setSearch }) => {
   return (
-    <GridColumnMenuContainer
-      currentColumn={currentColumn}
-      hideMenu={hideMenu}
-      open={open}
-    >
-      <GridFilterMenuItem column={currentColumn} onClick={hideMenu} />
-      <HideGridColMenuItem column={currentColumn} onClick={hideMenu} />
-    </GridColumnMenuContainer>
+    <GridToolbarContainer>
+      <FlexBetween width="100%">
+        <FlexBetween>
+          {/* 列配置 */}
+          <GridToolbarColumnsButton />
+          {/* 表格密度 */}
+          <GridToolbarDensitySelector />
+          {/* 数据导出 */}
+          <GridToolbarExport />
+        </FlexBetween>
+        <TextField
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={() => {
+                    setSearch(searchInput)
+                    setSearchInput('')
+                  }}
+                >
+                  <Search />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+          label="搜索..."
+          onChange={(e) => setSearchInput(e.target.value)}
+          sx={{ mb: '0.5rem', width: '15rem' }}
+          value={searchInput}
+          variant="standard"
+        />
+      </FlexBetween>
+    </GridToolbarContainer>
   )
 }
 
-export default CustomColumnMenu
+export default DataGridCustomToolbar

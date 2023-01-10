@@ -10,6 +10,9 @@ import Dashboard from '@/scenes/dashboard'
 import Products from '@/scenes/products'
 import Customers from '@/scenes/customers'
 import Transactions from '@/scenes/transactions'
+import Geography from '@/scenes/geography'
+import Overview from '@/scenes/overview'
+import Daily from '@/scenes/daily'
 
 function App () {
   const mode = useSelector(state => state.global.mode)
@@ -35,7 +38,11 @@ function App () {
                 path="/customers"
               />
               <Route element={<Transactions />} path="/transactions" />
+              <Route element={<Geography />} path="/geography" />
+              <Route element={<Overview />} path="/overview" />
+              <Route element={<Daily />} path="/daily" />
             </Route>
+
           </Routes>
         </ThemeProvider>
       </BrowserRouter>

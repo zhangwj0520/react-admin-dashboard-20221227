@@ -108,6 +108,7 @@ const Transactions = () => {
           componentsProps={{
             toolbar: { searchInput, setSearchInput, setSearch },
           }}
+          // components={{ Toolbar: GridToolbar }}
           getRowId={(row) => row._id}
           loading={isLoading || !data}
           localeText={zhCN.components.MuiDataGrid.defaultProps.localeText}

@@ -1,3 +1,11 @@
+/*
+ * @Author: 张为杰 zhangweijie@cestc.cn
+ * @Date: 2022-12-27 13:56:51
+ * @LastEditors: 张为杰 zhangweijie@cestc.cn
+ * @LastEditTime: 2023-01-09 10:37:00
+ * @FilePath: /react-admin-dashboard-20221227/server/index.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 import express from 'express'
 import bodyParser from 'body-parser'
 import mongoose from 'mongoose'
@@ -17,7 +25,8 @@ import User from './models/User.js'
 import Product from './models/Product.js'
 import ProductStat from './models/ProductStat.js'
 import Transaction from './models/Transaction.js'
-import { dataUser, dataProduct, dataProductStat, dataTransaction } from './data/index.js'
+import OverallStat from './models/OverallStat.js'
+import { dataUser, dataProduct, dataProductStat, dataTransaction, dataOverallStat } from './data/index.js'
 
 /* CONFIGURATION */
 dotenv.config()
@@ -49,7 +58,7 @@ mongoose
 
     /* ONLY ADD DATA ONE TIME */
     // AffiliateStat.insertMany(dataAffiliateStat);
-    // OverallStat.insertMany(dataOverallStat);
+    // OverallStat.insertMany(dataOverallStat)
     // Product.insertMany(dataProduct)
     // ProductStat.insertMany(dataProductStat)
     // Transaction.insertMany(dataTransaction)

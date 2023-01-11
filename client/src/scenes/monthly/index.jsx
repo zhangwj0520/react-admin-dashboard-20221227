@@ -1,7 +1,6 @@
 import OutletContent from '@/components/OutletContent'
 import Header from '@/components/Header'
 import { Box } from '@mui/system'
-
 import MonthlyChart from '@/components/MonthlyChart'
 
 const Overview = () => {

@@ -1,5 +1,4 @@
 import OutletContent from '@/components/OutletContent'
-import Loading from '@/components/Loading'
 import Header from '@/components/Header'
 import { useState } from 'react'
 import { Box } from '@mui/system'
